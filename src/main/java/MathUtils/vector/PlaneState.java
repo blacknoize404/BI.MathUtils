@@ -1,4 +1,4 @@
-package MathUtils;
+package MathUtils.vector;
 
 public enum PlaneState {
     PARALLEL,

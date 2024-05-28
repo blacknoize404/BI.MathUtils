@@ -1,31 +1,31 @@
 package MathUtils.vector;
 
 import MathUtils.Angle;
-import MathUtils.point.Point2D;
 import MathUtils.exceptions.ZeroVectorException;
+import MathUtils.point.Point2D;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 // TODO: 9/12/2023 Documentar las partes faltantes
 public class Vector2D extends Vector<Vector2D> implements Cloneable {
-    private double x;
+    private Double x;
     private double y;
     private Point2D from;
     private Point2D to;
 
     @Contract(" -> new")
     public static @NotNull Vector2D ZERO() {
-        return new Vector2D(0,0);
+        return new Vector2D(0, 0);
     }
 
-    public Vector2D(double x, double y) {
-        this.from = new Point2D(0, 0);
+    public Vector2D(Number x, Number y) {
+        this.from = new Point2D(0d, 0d);
         this.to = new Point2D(x, y);
         updateComponents();
     }
 
     public Vector2D(Point2D to) {
-        this.from = new Point2D(0, 0);
+        this.from = new Point2D(0d, 0d);
         this.to = to;
         updateComponents();
     }
@@ -52,30 +52,36 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
 
     @Override
     public Vector2D sum(Vector2D a) {
-        this.to = new Point2D(x + a.getX(), y + a.getY());
+        this.to = new Point2D(
+                x + a.getX(),
+                y + a.getY()
+        );
         updateComponents();
         return this;
     }
 
     @Override
-    public Vector2D substract(Vector2D a) {
-        this.to = new Point2D(x - a.getX(), y - a.getY());
+    public Vector2D subtract(Vector2D a) {
+        this.to = new Point2D(
+                x - a.getX(),
+                y - a.getY()
+        );
         updateComponents();
         return this;
     }
 
     @Override
-    public Vector2D multiply(double scalar) {
-        this.to.setX(this.to.getX() * scalar);
-        this.to.setY(this.to.getY() * scalar);
+    public Vector2D multiply(Number scalar) {
+        this.to.setX(this.to.getX() * scalar.doubleValue());
+        this.to.setY(this.to.getY() * scalar.doubleValue());
         updateComponents();
         return this;
     }
 
     @Override
-    public Vector2D divide(double scalar) {
-        this.to.setX(this.to.getX() / scalar);
-        this.to.setY(this.to.getY() / scalar);
+    public Vector2D divide(Number scalar) {
+        this.to.setX(this.to.getX() / scalar.doubleValue());
+        this.to.setY(this.to.getY() / scalar.doubleValue());
         updateComponents();
         return this;
     }
@@ -83,13 +89,13 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
     @Override
     public double getLength() {
         return Math.sqrt(
-                Math.pow(to.getX()- from.getX(), 2) +
-                Math.pow(to.getY() - from.getY(), 2));
+                Math.pow(to.getX() - from.getX(), 2) +
+                        Math.pow(to.getY() - from.getY(), 2));
     }
 
     @Override
     public double getDotProduct(@NotNull Vector2D a) {
-        return (long) (getX() * a.getX() + getY() * a.getY());
+        return getX() * a.getX() + getY() * a.getY();
     }
 
     @Override
@@ -105,7 +111,7 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
         // al calcular su raíz y luego elevarlo al cuadrado.
         double lengthSquared =
                 Math.pow(to.getX() - from.getX(), 2D) +
-                Math.pow(to.getY() - from.getY(), 2D);
+                        Math.pow(to.getY() - from.getY(), 2D);
 
         return this.getScalarProduct(a) == lengthSquared;
     }
@@ -114,7 +120,7 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
     public Angle getAngleBetween(Vector2D a) throws ZeroVectorException {
         if (isZero() || a.isZero()) throw new ZeroVectorException();
 
-        return Angle.fromRadians((long) Math.acos( getScalarProduct(a) / (getLength() * a.getLength()) ));
+        return Angle.fromRadians((long) Math.acos(getScalarProduct(a) / (getLength() * a.getLength())));
     }
 
     private void updateComponents() {
@@ -144,16 +150,16 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public void setX(Number x) {
+        this.x = x.doubleValue();
     }
 
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
+    public void setY(Number y) {
+        this.y = y.doubleValue();
     }
 
     public Point2D AsPoint() {
@@ -174,9 +180,10 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
         }
 
     }
+
     @Override
     public String toString() {
-        return "Vectorial.Vector2D <"+x+"; "+y+">, from="+from+"; to="+to;
+        return "Vectorial.Vector2D <" + x + "; " + y + ">, from=" + from + "; to=" + to;
     }
 
 }

@@ -1,9 +1,8 @@
-package MathUtils;
+package MathUtils.vector;
 
 import MathUtils.line.Line3D;
 import MathUtils.point.Point2D;
 import MathUtils.point.Point3D;
-import MathUtils.vector.Vector3D;
 
 /**
  * Se encargará de realizar operaciones entre planos

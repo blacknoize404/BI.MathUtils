@@ -1,4 +1,4 @@
-package MathUtils;
+package MathUtils.vector;
 
 // TODO: 9/12/2023 Implementar la curva como el concepto abstracto de una partícula que se mueve por un espacio
 //  dado un parámetro t dentro de un intervalo o no.

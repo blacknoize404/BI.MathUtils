@@ -25,7 +25,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * terminal de v.
      * @param a vector a sumar
      * @return el vector resultado de la operación
-     * @see #substract(Vector) 
+     * @see #subtract(Vector)
      */
     public abstract V sum(V a);
 
@@ -37,7 +37,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * @return el vector resultado de la operación
      * @see #sum(Vector) sum
      */
-    public abstract V substract(V a);
+    public abstract V subtract(V a);
 
     /**
      * Realiza el producto entre un escalar y el vector de la instancia.
@@ -50,9 +50,9 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * <p>Si c = 0 o v = 0, entonces cv = 0.
      * @param scalar escalar a multiplicar
      * @return el vector resultado de la operación
-     * @see #divide(double) divide
+     * @see #divide(Number) divide
      */
-    public abstract V multiply(double scalar);
+    public abstract V multiply(Number scalar);
 
     /**
      * Realiza el producto entre un escalar y el vector de la instancia.
@@ -60,9 +60,9 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * <p>Ídem de división por un escalar.
      * @param scalar escalar a dividir
      * @return el vector resultado de la operación
-     * @see #multiply(double) multiply
+     * @see #multiply(Number) multiply
      */
-    public abstract V divide(double scalar);
+    public abstract V divide(Number scalar);
 
     /**
      * Calcula la magnitud, longitud o norma del vector usando el teorema de Pitágoras.
@@ -72,6 +72,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * <p>{@code <a1, a2> = sqrt(a1^2 + a2^2)}
      * <p>La longitud del vector tridimensional:
      * <p>{@code <a1, a2, a3> = sqrt(a1^2 + a2^2 + a3^2)}
+     *
      * @return dicha magnitud, longitud o norma.
      * @see #getNorm()
      * @see #getMagnitude()
@@ -107,6 +108,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * entonces el producto punto de <b>a</b> y <b>b</b> es el
      * escalar <b>a</b> * <b>b</b> dado por:
      * <p><b>a</b> * <b>b</b> = a1 * b1 + a2 * b2 + a3 * b3</p>
+     *
      * @param a vector a multiplicar
      * @return el valor escalar resultante
      * @see #getScalarProduct(Vector)
@@ -136,8 +138,6 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
     public Vector3D getNormalVector(V a) {
         return getCrossProduct(a);
     }
-
-    // TODO: 9/12/2023 Documentar
     public V getUnitNormalVector(V a) {
         @SuppressWarnings("unchecked")
         V normal = (V) this.getCrossProduct(a);
@@ -178,7 +178,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * @return si son ortogonales o no.
      */
     public boolean isOrthogonalTo(V a) {
-        return this.getDotProduct(a) == 0;
+        return this.getDotProduct(a) == 0d;
     }
 
     /**
