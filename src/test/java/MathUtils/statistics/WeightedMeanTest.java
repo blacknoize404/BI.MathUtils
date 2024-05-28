@@ -1,6 +1,5 @@
-package math.statistics;
+package MathUtils.statistics;
 
-import MathUtils.statistics.WeightedMean;
 import org.junit.jupiter.api.Test;
 
 class WeightedMeanTest {

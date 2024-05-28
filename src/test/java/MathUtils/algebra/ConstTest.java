@@ -1,6 +1,5 @@
-package math.algebra;
+package MathUtils.algebra;
 
-import MathUtils.algebra.Const;
 import org.junit.jupiter.api.Test;
 
 class ConstTest {

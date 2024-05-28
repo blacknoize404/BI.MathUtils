@@ -1,3 +1,6 @@
+/**
+ * Librería orientada a las matemáticas, estadísticas, construcción y cálculo computacional en general.
+ */
 module MathUtils {
     requires org.jetbrains.annotations;
     exports MathUtils.vector;
@@ -13,4 +16,6 @@ module MathUtils {
     exports MathUtils.informatics;
     exports MathUtils.statistics;
     exports MathUtils;
+    exports MathUtils.series;
+    exports MathUtils.algebra.operators.primitives;
 }

@@ -1,8 +1,6 @@
-package math.algebra.exponentials;
+package MathUtils.algebra.exponentials;
 
-import MathUtils.algebra.exponentials.Cbrt;
 import MathUtils.algebra.Var;
-import MathUtils.algebra.exponentials.Root;
 import MathUtils.algebra.primitives.MathElement;
 import org.junit.jupiter.api.Test;
 

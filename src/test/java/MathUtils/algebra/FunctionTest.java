@@ -1,12 +1,8 @@
-package math.algebra;
+package MathUtils.algebra;
 
-import MathUtils.algebra.Const;
-import MathUtils.algebra.Function;
-import MathUtils.algebra.Var;
 import MathUtils.algebra.exponentials.Cbrt;
 import MathUtils.algebra.exponentials.Root;
 import MathUtils.algebra.exponentials.Sqrt;
-import MathUtils.algebra.primitives.MathElement;
 import org.junit.jupiter.api.Test;
 
 class FunctionTest {

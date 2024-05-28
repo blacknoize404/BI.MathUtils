@@ -1,9 +1,8 @@
-package math.algebra.logarithmics;
+package MathUtils.algebra.logarithmics;
 
 import MathUtils.algebra.Evaluation;
 import MathUtils.algebra.Function;
 import MathUtils.algebra.Var;
-import MathUtils.algebra.logarithmics.Ln;
 import MathUtils.algebra.operators.MultOperator;
 import MathUtils.exceptions.FunctionEvaluationException;
 import org.junit.jupiter.api.Test;

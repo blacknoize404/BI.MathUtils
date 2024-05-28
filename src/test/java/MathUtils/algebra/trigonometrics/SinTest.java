@@ -1,7 +1,5 @@
-package math.algebra.trigonometrics;
+package MathUtils.algebra.trigonometrics;
 
-import MathUtils.algebra.trigonometrics.Sin;
-import MathUtils.Angle;
 import MathUtils.algebra.Const;
 import MathUtils.exceptions.FunctionEvaluationException;
 import org.junit.jupiter.api.Test;

@@ -1,11 +1,10 @@
-package math.algebra.primitives;
+package MathUtils.algebra.primitives;
 
 import MathUtils.algebra.Const;
 import MathUtils.algebra.Var;
 import MathUtils.algebra.operators.MultOperator;
 import MathUtils.algebra.operators.SubOperator;
 import MathUtils.algebra.operators.SumOperator;
-import MathUtils.algebra.primitives.MathElement;
 import org.junit.jupiter.api.Test;
 
 class ExpressionTest {

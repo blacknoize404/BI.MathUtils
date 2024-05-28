@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>MathUtils</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

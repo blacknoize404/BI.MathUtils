@@ -1,5 +1,4 @@
-package math.algebra;
-import MathUtils.algebra.*;
+package MathUtils.algebra;
 import MathUtils.algebra.exponentials.Pow;
 import MathUtils.algebra.exponentials.Sqrt;
 import MathUtils.algebra.logarithmics.Ln;
