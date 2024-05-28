@@ -4,10 +4,10 @@ import MathUtils.vector.Vector;
 
 /**
  * Clase abstracta que representa el concepto del punto
- * @param <V> Usado para definir el tipo de retorno como vector (debe coincidir con la
+ * @param <P> Usado para definir el tipo de retorno como vector (debe coincidir con la
  *           dimensión del punto a la hora de implementarlo.
  */
-public abstract class Point<P extends Point<P, V>, V extends Vector<V>> implements Cloneable {
+public abstract class Point<P extends Point<?, ?>, V extends Vector<?>> implements Cloneable {
 
     /**
      * Devuelve el punto como un vector

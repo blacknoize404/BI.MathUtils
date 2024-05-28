@@ -1,22 +1,25 @@
 package MathUtils.point;
 
-import MathUtils.point.Point;
 import MathUtils.vector.Vector2D;
+import org.jetbrains.annotations.NotNull;
 
 
-public final class Point2D extends Point<Point2D, Vector2D> {
+public final class Point2D extends Point<Point2D, Vector2D> implements Comparable<Point2D> {
 
     private double x;
-
     private double y;
 
     public static Point2D ZERO() {
-        return new Point2D(0,0);
+        return new Point2D(0, 0);
     }
 
-    public Point2D(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Point2D(Number x, Number y) {
+        this.x = x.doubleValue();
+        this.y = y.doubleValue();
+    }
+
+    public static Point2D of(Number x, Number y) {
+        return new Point2D(x, y);
     }
 
     @Override
@@ -26,23 +29,24 @@ public final class Point2D extends Point<Point2D, Vector2D> {
 
     @Override
     public boolean isEqualTo(Point2D point) {
-        return point.x == getX() && point.y == getY();
+        return point.x == getX()
+                && point.y == getY();
     }
 
     public double getX() {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public void setX(Number x) {
+        this.x = x.doubleValue();
     }
 
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
+    public void setY(Number y) {
+        this.y = y.doubleValue();
     }
 
 
@@ -52,5 +56,10 @@ public final class Point2D extends Point<Point2D, Vector2D> {
                 "x = " + x + ", " +
                 "y = " + y +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Point2D o) {
+        return Double.compare(this.getX(), o.getX());
     }
 }

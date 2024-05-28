@@ -3,6 +3,7 @@ package MathUtils.algebra;
 import MathUtils.algebra.primitives.MathElement;
 import MathUtils.exceptions.FunctionEvaluationException;
 
+// TODO: 25/3/2024 23:01 Hacer que el numerador y el denominador sean Elementos matemáticos
 /**
  * Representa una fracción y las operaciones que se pueden realizar con esta
  * @author Barnés Inside

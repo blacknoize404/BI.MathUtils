@@ -32,7 +32,7 @@ import MathUtils.exceptions.FunctionEvaluationException;
  * }
  *
  */
-public class Function extends MathElement {
+public final class Function extends MathElement {
 
     private final MathElement content;
 

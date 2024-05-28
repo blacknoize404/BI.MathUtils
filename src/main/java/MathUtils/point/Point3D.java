@@ -4,20 +4,20 @@ import MathUtils.vector.Vector3D;
 
 public final class Point3D extends Point<Point3D, Vector3D> {
 
-    private double x;
+    private Double x;
 
-    private double y;
+    private Double y;
 
-    private double z;
+    private Double z;
 
     public static Point3D ZERO() {
-        return new Point3D(0,0,0);
+        return new Point3D(0, 0, 0);
     }
 
-    public Point3D(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Point3D(Number x, Number y, Number z) {
+        this.x = x.doubleValue();
+        this.y = y.doubleValue();
+        this.z = z.doubleValue();
     }
 
     @Override
@@ -27,31 +27,33 @@ public final class Point3D extends Point<Point3D, Vector3D> {
 
     @Override
     public boolean isEqualTo(Point3D point) {
-        return point.x == getX() && point.y == getY() && point.z == getZ();
+        return point.x == getX() &&
+                point.y == getY() &&
+                point.z == getZ();
     }
 
-    public double getX() {
+    public Double getX() {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public void setX(Number x) {
+        this.x = x.doubleValue();
     }
 
-    public double getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
+    public void setY(Number y) {
+        this.y = y.doubleValue();
     }
 
-    public double getZ() {
+    public Double getZ() {
         return z;
     }
 
-    public void setZ(double z) {
-        this.z = z;
+    public void setZ(Number z) {
+        this.z = z.doubleValue();
     }
 
     @Override

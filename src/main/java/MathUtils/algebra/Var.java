@@ -21,7 +21,7 @@ public final class Var extends Expression<String> {
         // Buscar si la variable existe
         Optional<Evaluation> varValue = Arrays
                 .stream(evaluations)
-                .filter(doubleVarValue -> doubleVarValue.var.equalsIgnoreCase(argument))
+                .filter(doubleVarValue -> doubleVarValue.var().equalsIgnoreCase(argument))
                 .findFirst();
 
         // Emite la excepción si no encontró la variable
@@ -30,7 +30,7 @@ public final class Var extends Expression<String> {
         }
 
         // Sustituye la variable por el valor
-        return varValue.get().value.doubleValue();
+        return varValue.get().value().doubleValue();
     }
 
 }
