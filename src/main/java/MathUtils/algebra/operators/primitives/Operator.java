@@ -1,6 +1,7 @@
-package MathUtils.algebra.primitives;
+package MathUtils.algebra.operators.primitives;
 
 import MathUtils.algebra.Const;
+import MathUtils.algebra.primitives.MathElement;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -3,7 +3,7 @@ package MathUtils.algebra.operators;
 import MathUtils.algebra.Evaluation;
 import MathUtils.exceptions.FunctionEvaluationException;
 import MathUtils.algebra.primitives.MathElement;
-import MathUtils.algebra.primitives.Operator;
+import MathUtils.algebra.operators.primitives.Operator;
 
 import java.util.Iterator;
 
