@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 // TODO: 9/12/2023 Documentar las partes faltantes
 public class Vector2D extends Vector<Vector2D> implements Cloneable {
     private Double x;
-    private double y;
+    private Double y;
     private Point2D from;
     private Point2D to;
 

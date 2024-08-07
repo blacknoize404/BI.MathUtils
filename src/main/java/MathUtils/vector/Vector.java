@@ -4,7 +4,7 @@ import MathUtils.Angle;
 import MathUtils.exceptions.ZeroVectorException;
 
 // TODO: 8/12/2023 Revisar qué podría faltar de vectores
-public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
+abstract class Vector<V extends Vector<V>> implements Comparable<V> {
 
     /**
      * Determina si el vector es un vector nulo o cero.
