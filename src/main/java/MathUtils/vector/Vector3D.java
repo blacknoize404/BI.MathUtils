@@ -69,11 +69,20 @@ public class Vector3D extends Vector<Vector3D> {
         updateComponents();
     }
 
+    public static Vector3D of(double x, double y, double z) {
+        return new Vector3D(x, y, z);
+    }
+
     @Override
     public boolean isZero() {
         return getX() == 0 &&
                 getY() == 0 &&
                 getZ() == 0;
+    }
+
+    @Override
+    public Vector3D abs() {
+        return Vector3D.of(Math.abs(x), Math.abs(y), Math.abs(z));
     }
 
     @Override

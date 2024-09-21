@@ -18,6 +18,22 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
         return new Vector2D(0, 0);
     }
 
+    public static Vector2D FORWARD() {
+        return new Vector2D(1, 0);
+    }
+
+    public static Vector2D BACKWARD() {
+        return new Vector2D(-1, 0);
+    }
+
+    public static Vector2D LEFT() {
+        return new Vector2D(0, -1);
+    }
+
+    public static Vector2D RIGHT() {
+        return new Vector2D(0, 1);
+    }
+
     public Vector2D(Number x, Number y) {
         this.from = new Point2D(0d, 0d);
         this.to = new Point2D(x, y);
@@ -38,16 +54,30 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
 
     // TODO: 9/12/2023 Crear un constructor de un vector que se pueda construir
     //  por sus ángulos respectivos en los ejes
-    // TODO: 9/12/2023 Testear esta función y documentar las fuentes 
-    public Vector2D(Angle xAngle, Angle yAngle) {
-//        this.from = from;
-//        this.to = to;
-//        updateComponents();
+    // TODO: 9/12/2023 Testear esta función y documentar las fuentes
+
+    /**
+     * Devuelve un vector que tenga como ángulo el definido en el argumento
+     * @param angle el ángulo definido
+     */
+    public Vector2D(Angle angle) {
+        this.from = Point2D.ZERO();
+        this.to = new Point2D(Math.cos(angle.getRadian()), Math.sin(angle.getRadian()));
+        updateComponents();
+    }
+
+    public static Vector2D of(double x, double y) {
+        return new Vector2D(x, y);
     }
 
     @Override
     public boolean isZero() {
         return getX() == 0 && getY() == 0;
+    }
+
+    @Override
+    public Vector2D abs() {
+        return Vector2D.of(Math.abs(this.x), Math.abs(this.y));
     }
 
     @Override
@@ -183,7 +213,7 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
 
     @Override
     public String toString() {
-        return "Vectorial.Vector2D <" + x + "; " + y + ">, from=" + from + "; to=" + to;
+        return "Vectorial.Point2D <" + x + "; " + y + ">, from=" + from + "; to=" + to;
     }
 
 }

@@ -1,5 +1,6 @@
 package MathUtils.algebra.operators;
 
+import MathUtils.algebra.Const;
 import MathUtils.algebra.Evaluation;
 import MathUtils.exceptions.FunctionEvaluationException;
 import MathUtils.algebra.primitives.MathElement;

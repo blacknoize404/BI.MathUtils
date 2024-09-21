@@ -3,6 +3,7 @@
  */
 module MathUtils {
     requires org.jetbrains.annotations;
+    requires java.desktop;
     exports MathUtils.vector;
     exports MathUtils.algebra;
     exports MathUtils.algebra.exponentials;

@@ -1,4 +1,4 @@
-package MathUtils.tests;
+package MathUtils;
 
 import MathUtils.line.Line;
 import MathUtils.line.Line2D;
@@ -16,6 +16,7 @@ public class Line2DTest {
     }
 
     public static void Line2DIntersectedTest() {
+
         Line2D l1 = new Line2D(new Point2D(0,0), new Vector2D(2,1));
         Line2D l2 = new Line2D(new Point2D(0,0), new Vector2D(-2,1));
 

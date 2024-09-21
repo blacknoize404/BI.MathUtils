@@ -3,7 +3,6 @@ package MathUtils.point;
 import MathUtils.vector.Vector2D;
 import org.jetbrains.annotations.NotNull;
 
-
 public final class Point2D extends Point<Point2D, Vector2D> implements Comparable<Point2D> {
 
     private double x;
@@ -14,6 +13,7 @@ public final class Point2D extends Point<Point2D, Vector2D> implements Comparabl
     }
 
     public Point2D(Number x, Number y) {
+
         this.x = x.doubleValue();
         this.y = y.doubleValue();
     }

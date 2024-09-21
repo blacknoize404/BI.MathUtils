@@ -1,4 +1,4 @@
-package MathUtils.tests;
+package MathUtils;
 
 import MathUtils.algebra.Const;
 import MathUtils.algebra.Evaluation;

@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>MathUtils</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.5-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -25,6 +25,18 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.barnesinside</groupId>
+            <artifactId>MathUtils</artifactId>
+            <version>0.4-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.barnesinside</groupId>
+            <artifactId>MathUtils</artifactId>
+            <version>0.4-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>

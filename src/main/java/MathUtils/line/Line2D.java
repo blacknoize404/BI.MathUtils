@@ -1,19 +1,18 @@
 package MathUtils.line;
 
 import MathUtils.point.Point2D;
-import MathUtils.vector.Vector2D;
 
 // TODO: 8/12/2023 implementar todo aquí
 // TODO: 9/12/2023 Hacer las citas al libro de Stewart Epígrafe 12.5
-public class Line2D extends Line<Line2D, Point2D, Vector2D> {
+public class Line2D extends Line<Line2D, Point2D, MathUtils.vector.Vector2D> {
 
     /**
      * Crea una nueva recta
      *
      * @param displacement punto que define el desplazamiento de la recta
-     * @param direction    dirección en la cual apunta la recta
+     * @param direction    dirección en la cual apunta la recta como un vector
      */
-    public Line2D(Point2D displacement, Vector2D direction) {
+    public Line2D(Point2D displacement, MathUtils.vector.Vector2D direction) {
         super(displacement, direction);
     }
 
