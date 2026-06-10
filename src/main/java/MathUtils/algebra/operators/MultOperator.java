@@ -63,15 +63,6 @@ public final class MultOperator extends Operator {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Iterator<MathElement> iterator = elements.iterator();
-        while (iterator.hasNext()) {
-            sb.append(iterator.next().toString());
-            if (iterator.hasNext()) {
-                sb.append(" * ");
-            }
-        }
-
-        return sb.toString();
+        return generateStringRepresentation(" * ", elements);
     }
 }

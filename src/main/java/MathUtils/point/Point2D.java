@@ -1,7 +1,6 @@
 package MathUtils.point;
 
 import MathUtils.vector.Vector2D;
-import org.jetbrains.annotations.NotNull;
 
 public final class Point2D extends Point<Point2D, Vector2D> implements Comparable<Point2D> {
 
@@ -59,7 +58,7 @@ public final class Point2D extends Point<Point2D, Vector2D> implements Comparabl
     }
 
     @Override
-    public int compareTo(@NotNull Point2D o) {
+    public int compareTo(Point2D o) {
         return Double.compare(this.getX(), o.getX());
     }
 }

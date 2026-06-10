@@ -5,5 +5,4 @@ public enum PlaneState {
     PERPENDICULAR,
     COINCIDENT,
     NO_PERPENDICULAR
-
 }

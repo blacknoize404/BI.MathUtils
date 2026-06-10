@@ -6,9 +6,9 @@ import MathUtils.algebra.primitives.MathElement;
 /**
  * Representa la función del logaritmo natural o neperiano
  */
-public final class Ln extends Log {
+public final class LogN extends Log {
 
-    public Ln(MathElement argument) {
+    public LogN(MathElement argument) {
         super(argument, new Const(Math.E));
     }
 

@@ -38,4 +38,9 @@ public final class SubOperator extends Operator {
 
         return result;
     }
+
+    @Override
+    public String toString() {
+        return generateStringRepresentation(" - ", elements);
+    }
 }

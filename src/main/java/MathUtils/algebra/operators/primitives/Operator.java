@@ -39,21 +39,17 @@ public abstract class Operator extends MathElement {
      * @param elements elementos restantes en caso de una operación encadenada.
      */
     public Operator(Number constant, MathElement secondElement, MathElement... elements) {
-        this.elements.add(new Const(constant));
-        this.elements.add(secondElement);
-        this.elements.addAll(List.of(elements));
+        this(new Const(constant), secondElement, elements);
     }
 
     /**
      * Construye la operación con un elemento matemático n >= 1 valores numéricos.
      * @param first primer elemento.
      * @param constant constante.
-     * @param elements valores restantes en caso de una operación encadenada.
+     * @param constants valores restantes en caso de una operación encadenada.
      */
-    public Operator(MathElement first, Number constant, Number... elements) {
-        this.elements.add(first);
-        this.elements.add(new Const(constant));
-        this.elements.addAll(convertElementList(elements));
+    public Operator(MathElement first, Number constant, Number... constants) {
+        this(first, new Const(constant), convertElementList(constants));
     }
 
     /**
@@ -63,9 +59,7 @@ public abstract class Operator extends MathElement {
      * @param constants valores restantes en caso de una operación encadenada.
      */
     public Operator(Number firstConstant, Number secondConstant, Number... constants) {
-        this.elements.add(new Const(firstConstant));
-        this.elements.add(new Const(secondConstant));
-        this.elements.addAll(convertElementList(constants));
+        this(new Const(firstConstant), new Const(secondConstant), convertElementList(constants));
     }
 
     /**
@@ -73,8 +67,17 @@ public abstract class Operator extends MathElement {
      * @param constants arreglo de números a convertir
      * @return una colección de elementos matemáticos constantes.
      */
-    private Collection<MathElement> convertElementList(Number... constants) {
-        return Arrays.stream(constants).map((Function<Number, MathElement>) Const::new).toList();
+    private static MathElement[] convertElementList(Number... constants) {
+        return Arrays.stream(constants).map(Const::new).toArray(MathElement[]::new);
+    }
+
+    protected static String generateStringRepresentation(String separator, Collection<MathElement> elements) {
+        return '(' +
+                String.join(
+                        separator,
+                        elements.stream().map(MathElement::toString).toList()
+                ) +
+                ')';
     }
 
     /**

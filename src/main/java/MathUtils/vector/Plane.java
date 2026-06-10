@@ -15,7 +15,7 @@ public class Plane {
         this.normalVector = new Vector3D(xSlope, ySlope, zSlope);
     }
 
-    public Plane(double xSlope, double ySlope, double zSlope, double xDisplacement, double yDisplacement, double zDisplacement) {
+    public Plane(double xSlope, double ySlope, double zSlope, double xDisplacement, double yDisplacement, double zDisplacement, double ...zdi) {
         this.normalVector = new Vector3D(xSlope, ySlope, zSlope);
         this.displacement = new Point3D(xDisplacement, yDisplacement, zDisplacement);
     }
@@ -44,8 +44,9 @@ public class Plane {
         this.displacement = Point3D.ZERO();
     }
 
+//     TODO: Comprobar que funcione apropiadamente.
+
     /**
-     * TODO: Comprobar que funcione apropiadamente.
      * @param point punto el cual necesita ser evaluado en el plano.
      * @return devuelve el resultado de la evaluación del punto (valor de z)
      */
@@ -59,7 +60,7 @@ public class Plane {
      * @return un booleano en true en caso de que el punto se encuentre dentro del plano.
      */
     public boolean isInPlane(Point3D point) {
-        return point.getZ() == eval(new Point2D(point.getX(), point.getX()));
+        return point.getZ() == eval(new Point2D(point.getX(), point.getY()));
     }
 
     /**
@@ -146,15 +147,9 @@ public class Plane {
     @Override
     public String toString() {
         return "0 = " +
-                getXSlope() + "(x - " +
-                getXDisplacement() +
-                ") + " +
-                getYSlope() + "(y - " +
-                getYDisplacement() +
-                ") + " +
-                getZSlope() + "(z - " +
-                getZDisplacement() +
-                ")";
+                getXSlope() + "(x - " + getXDisplacement() + ") + " +
+                getYSlope() + "(y - " + getYDisplacement() + ") + " +
+                getZSlope() + "(z - " + getZDisplacement() + ")";
 
     }
 }

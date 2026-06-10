@@ -47,6 +47,11 @@ public class Root extends Expression<MathElement> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("(");
-        return sb.append(argument.toString()).append(")^").append("{1/").append(root.toString()).append("}").toString();
+        return sb.append(argument.toString())
+                .append(")^")
+                .append("{1/")
+                .append(root.toString())
+                .append("}")
+                .toString();
     }
 }

@@ -39,7 +39,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
      * Realiza la resta vectorial entre el vector de la instancia y el del argumento.
      * <p>Stewart 7.ª Ed. Sección 12.2. Vectores. p. 792
      * <p>Ídem a definición de suma vectorial
-     * @param a vector a sumar
+     * @param a vector a restar
      * @return el vector resultado de la operación
      * @see #sum(Vector) sum
      */
@@ -144,6 +144,7 @@ public abstract class Vector<V extends Vector<V>> implements Comparable<V> {
     public Vector3D getNormalVector(V a) {
         return getCrossProduct(a);
     }
+
     public V getUnitNormalVector(V a) {
         @SuppressWarnings("unchecked")
         V normal = (V) this.getCrossProduct(a);

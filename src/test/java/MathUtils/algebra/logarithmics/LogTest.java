@@ -14,7 +14,7 @@ class LogTest {
 
         // f(t) = Ln(1/8 * t)
         Function f = new Function(
-                new Ln(
+                new LogN(
                         new MultOperator(
                                 1/8d,
                                 new Var("t")

@@ -3,8 +3,6 @@ package MathUtils.vector;
 import MathUtils.Angle;
 import MathUtils.exceptions.ZeroVectorException;
 import MathUtils.point.Point2D;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 // TODO: 9/12/2023 Documentar las partes faltantes
 public class Vector2D extends Vector<Vector2D> implements Cloneable {
@@ -13,8 +11,7 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
     private Point2D from;
     private Point2D to;
 
-    @Contract(" -> new")
-    public static @NotNull Vector2D ZERO() {
+    public static Vector2D ZERO() {
         return new Vector2D(0, 0);
     }
 
@@ -58,6 +55,7 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
 
     /**
      * Devuelve un vector que tenga como ángulo el definido en el argumento
+     *
      * @param angle el ángulo definido
      */
     public Vector2D(Angle angle) {
@@ -124,12 +122,12 @@ public class Vector2D extends Vector<Vector2D> implements Cloneable {
     }
 
     @Override
-    public double getDotProduct(@NotNull Vector2D a) {
+    public double getDotProduct(Vector2D a) {
         return getX() * a.getX() + getY() * a.getY();
     }
 
     @Override
-    public Vector3D getCrossProduct(@NotNull Vector2D a) {
+    public Vector3D getCrossProduct(Vector2D a) {
         return new Vector3D(0, 0, getX() * a.getY() - getY() * a.getX());
     }
 

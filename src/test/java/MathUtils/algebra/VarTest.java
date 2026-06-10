@@ -1,7 +1,7 @@
 package MathUtils.algebra;
 import MathUtils.algebra.exponentials.Pow;
 import MathUtils.algebra.exponentials.Sqrt;
-import MathUtils.algebra.logarithmics.Ln;
+import MathUtils.algebra.logarithmics.LogN;
 import MathUtils.algebra.logarithmics.Log;
 import MathUtils.algebra.operators.MultOperator;
 import MathUtils.algebra.operators.SubOperator;
@@ -129,7 +129,7 @@ class VarTest {
                                 ),
                                 45
                         ),
-                        new Ln(
+                        new LogN(
                                 new MultOperator(1/8d, t)
                         )
                 )

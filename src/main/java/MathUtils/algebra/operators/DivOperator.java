@@ -42,4 +42,9 @@ public final class DivOperator extends Operator {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return generateStringRepresentation(" / ", elements);
+    }
+
 }

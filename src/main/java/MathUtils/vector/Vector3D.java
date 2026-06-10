@@ -8,8 +8,8 @@ public class Vector3D extends Vector<Vector3D> {
     private double x;
     private double y;
     private double z;
-    private Point3D from;
-    private Point3D to;
+    private Point3D origin;
+    private Point3D destination;
 
     public static Vector3D ZERO() {
         return new Vector3D(0, 0, 0);
@@ -40,31 +40,31 @@ public class Vector3D extends Vector<Vector3D> {
     }
 
     public Vector3D(Number x, Number y, Number z) {
-        this.from = new Point3D(0, 0, 0);
-        this.to = new Point3D(x, y, z);
+        this.origin = new Point3D(0, 0, 0);
+        this.destination = new Point3D(x, y, z);
         updateComponents();
     }
 
-    public Vector3D(Point3D to) {
-        this.from = new Point3D(0, 0, 0);
-        this.to = to;
+    public Vector3D(Point3D destination) {
+        this.origin = new Point3D(0, 0, 0);
+        this.destination = destination;
         updateComponents();
     }
 
-    public Vector3D(Point3D from, Point3D to) {
-        this.from = from;
-        this.to = to;
+    public Vector3D(Point3D origin, Point3D destination) {
+        this.origin = origin;
+        this.destination = destination;
         updateComponents();
     }
 
     // TODO: 26/11/2023 Los valores no son exactos y se pierde precisión en las conversiones
     public Vector3D(Number length, Number xAngle, Number yAngle, Number zAngle) {
 
-        this.from = new Point3D(0, 0, 0);
+        this.origin = new Point3D(0, 0, 0);
         double xRadian = Angle.fromAngle(xAngle.doubleValue()).getRadian();
         double yRadian = Angle.fromAngle(yAngle.doubleValue()).getRadian();
         double zRadian = Angle.fromAngle(zAngle.doubleValue()).getRadian();
-        this.to = new Point3D(Math.cos(xRadian), Math.cos(yRadian), Math.cos(zRadian));
+        this.destination = new Point3D(Math.cos(xRadian), Math.cos(yRadian), Math.cos(zRadian));
         this.multiply(length);
         updateComponents();
     }
@@ -87,8 +87,8 @@ public class Vector3D extends Vector<Vector3D> {
 
     @Override
     public Vector3D sum(Vector3D a) {
-        this.from = this.to;
-        this.to = new Point3D(
+        this.origin = this.destination;
+        this.destination = new Point3D(
                 x + a.getX(),
                 y + a.getY(),
                 z + a.getZ()
@@ -99,8 +99,8 @@ public class Vector3D extends Vector<Vector3D> {
 
     @Override
     public Vector3D subtract(Vector3D a) {
-        this.from = this.to;
-        this.to = new Point3D(
+        this.origin = this.destination;
+        this.destination = new Point3D(
                 x - a.getX(),
                 y - a.getY(),
                 z - a.getZ());
@@ -110,18 +110,18 @@ public class Vector3D extends Vector<Vector3D> {
 
     @Override
     public Vector3D multiply(Number scalar) {
-        this.to.setX(this.to.getX() * scalar.doubleValue());
-        this.to.setY(this.to.getY() * scalar.doubleValue());
-        this.to.setZ(this.to.getZ() * scalar.doubleValue());
+        this.destination.setX(this.destination.getX() * scalar.doubleValue());
+        this.destination.setY(this.destination.getY() * scalar.doubleValue());
+        this.destination.setZ(this.destination.getZ() * scalar.doubleValue());
         updateComponents();
         return this;
     }
 
     @Override
     public Vector3D divide(Number scalar) {
-        this.to.setX(this.to.getX() / scalar.doubleValue());
-        this.to.setY(this.to.getY() / scalar.doubleValue());
-        this.to.setZ(this.to.getZ() / scalar.doubleValue());
+        this.destination.setX(this.destination.getX() / scalar.doubleValue());
+        this.destination.setY(this.destination.getY() / scalar.doubleValue());
+        this.destination.setZ(this.destination.getZ() / scalar.doubleValue());
         updateComponents();
         return this;
     }
@@ -131,9 +131,9 @@ public class Vector3D extends Vector<Vector3D> {
         // FIXME: 26/11/2023 Esto devuelve un valor con precisión perdida
         //  elevarlo al cuadrado no devolverá el mismo resultado.
         return Math.pow(
-                Math.pow(to.getX() - from.getX(), 2) +
-                Math.pow(to.getY() - from.getY(), 2) +
-                Math.pow(to.getZ() - from.getZ(), 2),
+                Math.pow(destination.getX() - origin.getX(), 2) +
+                        Math.pow(destination.getY() - origin.getY(), 2) +
+                        Math.pow(destination.getZ() - origin.getZ(), 2),
                 (double) 1 / 2
         );
     }
@@ -159,9 +159,9 @@ public class Vector3D extends Vector<Vector3D> {
         // Tuve que hacer este procedimiento para evitar perder precisión
         // al calcular su raíz y luego elevarlo al cuadrado.
         double lengthSquared =
-                Math.pow(to.getX() - from.getX(), 2D) +
-                        Math.pow(to.getY() - from.getY(), 2D) +
-                        Math.pow(to.getZ() - from.getZ(), 2D);
+                Math.pow(destination.getX() - origin.getX(), 2D) +
+                        Math.pow(destination.getY() - origin.getY(), 2D) +
+                        Math.pow(destination.getZ() - origin.getZ(), 2D);
 
         return this.getScalarProduct(a) == lengthSquared;
     }
@@ -210,9 +210,9 @@ public class Vector3D extends Vector<Vector3D> {
     }
 
     private void updateComponents() {
-        setX(to.getX() - from.getX());
-        setY(to.getY() - from.getY());
-        setZ(to.getZ() - from.getZ());
+        setX(destination.getX() - origin.getX());
+        setY(destination.getY() - origin.getY());
+        setZ(destination.getZ() - origin.getZ());
     }
 
 
@@ -221,8 +221,8 @@ public class Vector3D extends Vector<Vector3D> {
 
         try {
             Vector3D cloned = (Vector3D) super.clone();
-            cloned.from = cloned.from.clone();
-            cloned.to = cloned.to.clone();
+            cloned.origin = cloned.origin.clone();
+            cloned.destination = cloned.destination.clone();
             return cloned;
         } catch (CloneNotSupportedException e) {
             // this shouldn't happen, since we are Cloneable
@@ -257,7 +257,7 @@ public class Vector3D extends Vector<Vector3D> {
 
     @Override
     public String toString() {
-        return "Vector3D <" + x + "; " + y + "; " + z + ">, from=" + from + "; to=" + to;
+        return "Vector3D <" + x + "; " + y + "; " + z + ">, from=" + origin + "; to=" + destination;
     }
 
 }

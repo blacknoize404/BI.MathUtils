@@ -36,20 +36,9 @@ public final class SumOperator extends Operator {
         return result;
     }
 
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("(");
-        Iterator<MathElement> iterator = elements.iterator();
-        while (iterator.hasNext()) {
-            sb.append(iterator.next().toString());
-            if (iterator.hasNext()) {
-                sb.append(" * ");
-            }
-        }
-
-        return sb.append(")").toString();
+        return generateStringRepresentation(" + ", elements);
     }
-
 
 }

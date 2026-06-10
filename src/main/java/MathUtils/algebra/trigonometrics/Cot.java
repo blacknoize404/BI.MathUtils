@@ -15,8 +15,8 @@ public class Cot extends Expression<MathElement> {
      * Evaluación de la cotangente usando la identidad trigonométrica.
      */
     @Override
-    public double eval(Evaluation... variables) throws FunctionEvaluationException {
-        double value = argument.eval(variables);
+    public double eval(Evaluation... evaluations) throws FunctionEvaluationException {
+        double value = argument.eval(evaluations);
 
         return Math.cos(value) / Math.sin(value);
     }

@@ -17,6 +17,7 @@ public class Fraction extends MathElement implements Comparable<Fraction> {
     private boolean isImproper;
 
     public Fraction(int numerator, int denominator) {
+
         this.numerator = numerator;
         this.denominator = denominator;
         this.isImproper = numerator > denominator;

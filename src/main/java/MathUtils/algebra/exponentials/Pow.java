@@ -50,6 +50,8 @@ public class Pow extends Expression<MathElement> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("(");
-        return sb.append(argument.toString()).append(")^").append(exponent.toString()).toString();
+        return sb.append(argument.toString())
+                .append(")^")
+                .append(exponent.toString()).toString();
     }
 }

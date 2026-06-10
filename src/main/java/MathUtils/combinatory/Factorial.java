@@ -13,7 +13,7 @@ public class Factorial extends Expression<Number> {
         super(argument);
     }
 
-    public static Factorial of(Integer argument) {
+    public static Factorial of(Integer argument)     {
         return new Factorial(argument);
     }
 
