@@ -10,8 +10,6 @@ MathUtils es una librería de Java donde las expresiones algebraicas son objetos
 
 Java evalúa la matemática de forma inmediata. Entregas los valores y recibes un número, así que la fórmula en sí no se puede inspeccionar ni transformar. Mantener la expresión como un árbol lo permite, y es la base de las derivadas, límites e integrales con pasos del motor simbólico.
 
-
-
 > **Documentación en inglés / English version**: [README.en.md](README.en.md)
 
 ## Características Principales

@@ -1,74 +1,76 @@
 # MathUtils
 
-> **This library was born as a study project to link university mathematics coursework with programming.**
+![Java Version](https://img.shields.io/badge/Java-25-orange.svg)
+![License](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-lightgrey.svg)
+![Build](https://img.shields.io/badge/Build-passing-brightgreen.svg)
 
-Java library for mathematical computation with **algebraic expressions as first-class objects** and evaluable expression trees.
+> MathUtils started as a study project to link university mathematics with programming.
 
-> **Main documentation in Spanish**: [README.md](README.md)
+MathUtils is a Java library where algebraic expressions are objects: you build them as evaluable trees, evaluate them lazily and manipulate them symbolically.
+
+Plain Java evaluates math eagerly. You pass values in and get a number out, so the formula itself cannot be inspected or transformed. Keeping the expression as a tree makes that possible, and it is the base for the derivatives, limits and integrals with steps of the symbolic engine.
+
+> **Spanish documentation**: [README.md](README.md)
 
 ## Features
 
 ### 1. Typed, evaluable expression trees
-Build formulas by chaining methods on `Function`, not with strings:
+You build formulas by chaining methods on the `Function` class, so there are no strings to get wrong.
 ```java
 Var x = new Var("x");
 Function f = new Function(x).sin().pow(2).mult(3).add(new Cos(x)); // 3·sin²(x) + cos(x)
 double y = f.eval(new Evaluation("x", Math.PI)); // → 3·0 + (-1) = -1
 ```
-- **Lazy evaluation with variable substitution** via `Evaluation` (immutable record).
-- **Structural equality** (`equalsTo`): two trees are equal if they have the same shape and operands, not just the same numeric value.
-- **N-ary operators** (`SumOperator`, `MultOperator`, …): accept ≥2 operands, not just binary.
+- **Lazy evaluation with variable substitution:** values are computed on demand from the immutable `Evaluation` record.
+- **Structural equality** (`equalsTo`): two trees are equal if they have exactly the same shape and operands, which is stricter than comparing numeric values.
+- **N-ary operators:** Structures like `SumOperator` and `MultOperator` accept multiple operands without artificial binary chaining.
 
-### 2. Ready-to-use elementary function catalog
-`Const`, `Var`, `Sin`, `Cos`, `Tan`, `Cot`, `Log`, `LogN`, `Sqrt`, `Cbrt`, `Root`, `Pow`, `Fraction`; each is a `MathElement` and composes with operators.
+### 2. Elementary function catalog
+The library includes `Const`, `Var`, `Sin`, `Cos`, `Tan`, `Cot`, `Log`, `LogN`, `Sqrt`, `Cbrt`, `Root`, `Pow`, `Fraction`; each is a `MathElement` and composes with operators.
 
 ### 3. 2D/3D vectors with documented mathematical contracts
 Generic inheritance `Vector<V extends Vector<V>>` with:
 - Addition, subtraction, dot product, cross product, norm, angle, unit vector, orthogonality.
 - **Documentation with references to Stewart Calculus 7th ed.** (section and page) on every method.
 
-### 4. Basic analytic geometry
-`Point2D`, `Point3D`, `Line2D`, `Line3D`, `Plane`, `Space`, `Curve` — distance, intersection, projection operations.
+### 4. Analytic geometry
+Modules `Point2D`, `Point3D`, `Line2D`, `Line3D`, `Plane`, `Space`, and `Curve` perform absolute distance, intersection, and spatial projection calculations.
 
 ### 5. Combinatorics and statistics
-`Factorial`, `Combinatory` (binomial, multinomial), `WeightedMean`.
+- Combinatorial calculations via `Factorial` and `Combinatory` (binomial and multinomial models).
+- Weighted mean with `WeightedMean`.
 
 ### 6. Series, sequences, and utilities
-`Serie`, `Sequence`, base conversions (`Conversions`), angles (`Angle` with degrees/radians/gradians).
+Progressions with `Serie` and `Sequence`. Also numerical base conversion utilities and angle management (`Angle` in degrees, radians, and gradians).
 
 ---
 
-## Roadmap
-
-> These topics are **planned** but **not implemented**. See `TODO.md` for details.
-
-- Calculus: symbolic derivatives, numeric/symbolic integrals, gradient, jacobian
-- Shunting Yard parser (text → `Function`) and serializer (`Function` → text/LaTeX)
-- Linear algebra: matrices, eigenvalues, SVD, linear solvers
-- Complex numbers
-- ODEs / numerical analysis (root finding, interpolation, adaptive quadrature)
-- Advanced probability, optimization, Fourier transforms, special functions, tensor algebra
-
----
-
-## Quick start
+## Quick Start
 
 ```bash
 mvn compile
 mvn test
 ```
 
+---
+
+## Integration Example
+
 ```java
-// Complete example
-Var x = new Var("x"), y = new Var("y");
+Var x = new Var("x");
+Var y = new Var("y");
+
+// Hierarchical tree construction: (x · y + sin(x)) / 2
 Function f = new Function(x).mult(y).add(new Sin(x)).div(new Const(2));
+
+// Evaluation with immutable variable passing
 double r = f.eval(new Evaluation("x", 1.0), new Evaluation("y", 4.0));
-// r = (1·4 + sin(1)) / 2 ≈ 2.4207
+// r ≈ 2.4207
 ```
 
 ---
 
-## Project structure
+## Project Structure
 
 ```
 src/main/java/MathUtils/
@@ -96,10 +98,31 @@ src/main/java/MathUtils/
 
 ---
 
-## License
+## Roadmap
 
-CC-BY-NC-SA 4.0
+> These topics are **planned** but **not implemented**. See `TODO.md` for details.
+
+- **Symbolic calculus:** Automatic derivatives, numeric/symbolic integrals, gradients, and Jacobian matrices.
+- **Algebraic interpreter:** Shunting Yard algorithm to transform direct text expressions into `Function` objects and clean LaTeX export.
+- **Advanced linear algebra:** Native support for matrices, SVD decomposition, eigenvalues, and linear system solvers.
+- Complex numbers
+- ODEs / numerical analysis (root finding, interpolation, adaptive quadrature)
+- Advanced probability, optimization, Fourier transforms, special functions, tensor algebra
 
 ---
 
-**Versión en español**: [README.md](README.en.md)
+## How to Contribute
+
+Contributions are welcome:
+
+1. Fork the project.
+2. Create a branch with a new feature (git checkout -b feature/NewFeature).
+3. Ensure all tests pass (mvn test).
+4. Write corresponding unit tests for your addition.
+5. Submit a Pull Request detailing the changes.
+
+---
+
+## License
+
+This project is distributed under the CC-BY-NC-SA 4.0 license. Your academic use keeps the code open and accessible to the scientific community.
