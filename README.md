@@ -4,48 +4,48 @@
 ![License](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-lightgrey.svg)
 ![Build](https://img.shields.io/badge/Build-passing-brightgreen.svg)
 
-> MathUtils nació como un proyecto de estudio para vincular la matemática universitaria con la programación.
+> MathUtils started as a study project to link university mathematics with programming.
 
-MathUtils es una librería de Java donde las expresiones algebraicas son objetos: se construyen como árboles evaluables, se evalúan de forma perezosa y se manipulan simbólicamente.
+MathUtils is a Java library where algebraic expressions are objects: you build them as evaluable trees, evaluate them lazily and manipulate them symbolically.
 
-Java evalúa la matemática de forma inmediata. Entregas los valores y recibes un número, así que la fórmula en sí no se puede inspeccionar ni transformar. Mantener la expresión como un árbol lo permite, y es la base de las derivadas, límites e integrales con pasos del motor simbólico.
+Plain Java evaluates math eagerly. You pass values in and get a number out, so the formula itself cannot be inspected or transformed. Keeping the expression as a tree makes that possible, and it is the base for the derivatives, limits and integrals with steps of the symbolic engine.
 
-> **Documentación en inglés / English version**: [README.en.md](README.en.md)
+> **Spanish documentation**: [README.md](README.es.md)
 
-## Características Principales
+## Features
 
-### 1. Árboles de expresión tipados y evaluables
-Las fórmulas se construyen encadenando métodos de la clase `Function`, así que no hay cadenas de texto que escribir mal.
+### 1. Typed, evaluable expression trees
+You build formulas by chaining methods on the `Function` class, so there are no strings to get wrong.
 ```java
 Var x = new Var("x");
-Function f = new Function(x).sin().pow(2).mult(3).add(new Cos(x)); // 3·sen²(x) + cos(x)
+Function f = new Function(x).sin().pow(2).mult(3).add(new Cos(x)); // 3·sin²(x) + cos(x)
 double y = f.eval(new Evaluation("x", Math.PI)); // → 3·0 + (-1) = -1
 ```
-- **Evaluación perezosa con sustitución de variables:** los valores se calculan bajo demanda a partir del registro inmutable `Evaluation`.
-- **Igualdad estructural** (`equalsTo`): dos árboles son iguales si tienen exactamente la misma forma y operandos, lo que es más estricto que comparar valores numéricos.
-- **Operadores n-arios:** estructuras como `SumOperator` y `MultOperator` admiten múltiples operandos sin encadenamientos binarios artificiales.
+- **Lazy evaluation with variable substitution:** values are computed on demand from the immutable `Evaluation` record.
+- **Structural equality** (`equalsTo`): two trees are equal if they have exactly the same shape and operands, which is stricter than comparing numeric values.
+- **N-ary operators:** Structures like `SumOperator` and `MultOperator` accept multiple operands without artificial binary chaining.
 
-### 2. Catálogo de funciones elementales
-La librería incluye `Const`, `Var`, `Sin`, `Cos`, `Tan`, `Cot`, `Log`, `LogN`, `Sqrt`, `Cbrt`, `Root`, `Pow`, `Fraction`; cada uno es un `MathElement` y compone con los operadores.
+### 2. Elementary function catalog
+The library includes `Const`, `Var`, `Sin`, `Cos`, `Tan`, `Cot`, `Log`, `LogN`, `Sqrt`, `Cbrt`, `Root`, `Pow`, `Fraction`; each is a `MathElement` and composes with operators.
 
-### 3. Vectores 2D/3D con contratos matemáticos documentados
-Herencia genérica `Vector<V extends Vector<V>>` con:
-- Suma, resta, producto escalar, producto cruz, norma, ángulo, vector unitario, ortogonalidad.
-- **Documentación con referencias a Stewart Cálculo 7.ª ed.** (sección y página) en cada método.
+### 3. 2D/3D vectors with documented mathematical contracts
+Generic inheritance `Vector<V extends Vector<V>>` with:
+- Addition, subtraction, dot product, cross product, norm, angle, unit vector, orthogonality.
+- **Documentation with references to Stewart Calculus 7th ed.** (section and page) on every method.
 
-### 4. Geometría analítica
-Los módulos `Point2D`, `Point3D`, `Line2D`, `Line3D`, `Plane`, `Space` y `Curve` ejecutan cálculos de distancia absoluta, intersección y proyección espacial.
+### 4. Analytic geometry
+Modules `Point2D`, `Point3D`, `Line2D`, `Line3D`, `Plane`, `Space`, and `Curve` perform absolute distance, intersection, and spatial projection calculations.
 
-### 5. Combinatoria y estadística
-- Cálculos combinatorios mediante `Factorial` y `Combinatory` (modelos binomiales y multinomiales).
-- Media ponderada con `WeightedMean`.
+### 5. Combinatorics and statistics
+- Combinatorial calculations via `Factorial` and `Combinatory` (binomial and multinomial models).
+- Weighted mean with `WeightedMean`.
 
-### 6. Series, sucesiones y utilidades
-Progresiones con `Serie` y `Sequence`. También utilidades de conversión de base numérica y administración de ángulos (`Angle` en grados, radianes y gradianes).
+### 6. Series, sequences, and utilities
+Progressions with `Serie` and `Sequence`. Also numerical base conversion utilities and angle management (`Angle` in degrees, radians, and gradians).
 
 ---
 
-## Inicio rápido
+## Quick Start
 
 ```bash
 mvn compile
@@ -54,35 +54,35 @@ mvn test
 
 ---
 
-## Ejemplo de integración
+## Integration Example
 
-```Java
+```java
 Var x = new Var("x");
 Var y = new Var("y");
 
-// Construcción del árbol jerárquico: (x · y + sen(x)) / 2
+// Hierarchical tree construction: (x · y + sin(x)) / 2
 Function f = new Function(x).mult(y).add(new Sin(x)).div(new Const(2));
 
-// Evaluación con paso de variables inmutables
+// Evaluation with immutable variable passing
 double r = f.eval(new Evaluation("x", 1.0), new Evaluation("y", 4.0));
 // r ≈ 2.4207
 ```
 
 ---
 
-## Estructura del proyecto
+## Project Structure
 
 ```
 src/main/java/MathUtils/
 ├── algebra/
 │   ├── primitives/     # MathElement, Expression, Operator (base)
-│   ├── operators/      # Sum, Sub, Mult, Div (n-arios)
+│   ├── operators/      # Sum, Sub, Mult, Div (n-ary)
 │   ├── trigonometrics/ # Sin, Cos, Tan, Cot
 │   ├── exponentials/   # Pow, Root, Sqrt, Cbrt
 │   ├── logarithmics/   # Log, LogN
 │   ├── Const.java
 │   ├── Var.java
-│   ├── Function.java   # Flujo encadenado + eval(Evaluation...)
+│   ├── Function.java   # Fluent chaining + eval(Evaluation...)
 │   └── Evaluation.java # record(var, value)
 ├── vector/             # Vector, Vector2D, Vector3D
 ├── point/              # Point, Point2D, Point3D
@@ -100,28 +100,29 @@ src/main/java/MathUtils/
 
 ## Roadmap
 
-> Estos temas están **planificados** pero **no implementados**. Ver `TODO.md` para detalle.
+> These topics are **planned** but **not implemented**. See `TODO.md` for details.
 
-- **Cálculo simbólico:** Derivadas automáticas, integrales numéricas, gradientes y matrices jacobianas.
-- **Intérprete algebraico:** Algoritmo Shunting Yard para transformar expresiones de texto directo a objetos Function y exportación limpia a LaTeX.
-- **Álgebra lineal avanzada:** Soporte nativo para matrices, descomposición SVD, autovalores y resolutores de sistemas lineales.
-- Números complejos
-- EDOs / análisis numérico (raíces, interpolación, cuadratura adaptativa)
-- Probabilidad avanzada, optimización, transformadas de Fourier, funciones especiales, álgebra tensorial
-
----
-
-## Cómo contribuir
-Las contribuciones son bienvenidas:
-
-1. Haz un Fork del proyecto.
-2. Crea una rama con una nueva característica (git checkout -b feature/NuevaCaracteristica).
-3. Asegúrate de que todas las pruebas pasen (mvn test).
-4. Escribe las pruebas unitarias correspondientes para tu adición.
-5. Envía un Pull Request detallando los cambios.
+- **Symbolic calculus:** Automatic derivatives, numeric/symbolic integrals, gradients, and Jacobian matrices.
+- **Algebraic interpreter:** Shunting Yard algorithm to transform direct text expressions into `Function` objects and clean LaTeX export.
+- **Advanced linear algebra:** Native support for matrices, SVD decomposition, eigenvalues, and linear system solvers.
+- Complex numbers
+- ODEs / numerical analysis (root finding, interpolation, adaptive quadrature)
+- Advanced probability, optimization, Fourier transforms, special functions, tensor algebra
 
 ---
 
-## Licencia
+## How to Contribute
 
-Este proyecto se distribuye bajo la licencia CC-BY-NC-SA 4.0. Tu uso académico mantiene el código abierto y accesible para la comunidad científica.
+Contributions are welcome:
+
+1. Fork the project.
+2. Create a branch with a new feature (git checkout -b feature/NewFeature).
+3. Ensure all tests pass (mvn test).
+4. Write corresponding unit tests for your addition.
+5. Submit a Pull Request detailing the changes.
+
+---
+
+## License
+
+This project is distributed under the CC-BY-NC-SA 4.0 license. Your academic use keeps the code open and accessible to the scientific community.
